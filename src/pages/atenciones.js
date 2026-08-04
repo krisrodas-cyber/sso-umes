@@ -1,0 +1,1 @@
+export const atencionesPage = () => `<section><div class="page-heading"><div><p class="eyebrow">Seguimiento</p><h2>Atenciones</h2></div></div><div class="empty-state"><h3>Sin registros cargados</h3><p>La consulta y gestión de atenciones se conectará después con Supabase.</p></div></section>`

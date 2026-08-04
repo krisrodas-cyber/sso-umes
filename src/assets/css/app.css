@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+html { min-width: 320px; background: var(--umes-bg); }
+body { margin: 0; color: var(--umes-text); background: var(--umes-bg); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+a, button, input { outline-offset: 3px; }
+.app-column { min-height: 100vh; margin-left: var(--sidebar-width); }
+.app-content { padding: clamp(1.25rem, 3vw, 2rem); }
+.login-page { min-height: 100vh; display: grid; place-items: center; padding: 1.25rem; background: linear-gradient(135deg, #edf4f8, #f8fafc); }
+@media (max-width: 991.98px) {
+  .app-sidebar { transform: translateX(-100%); box-shadow: var(--umes-shadow); }
+  .app-sidebar.is-open { transform: translateX(0); }
+  .app-column { margin-left: 0; }
+  .app-topbar { padding: .8rem 1rem; }
+  .app-content { padding: 1rem; }
+  .user-placeholder { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

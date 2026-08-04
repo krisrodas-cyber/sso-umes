@@ -1,0 +1,1 @@
+export const dashboardPage = () => `<section><div class="page-heading"><div><p class="eyebrow">Resumen general</p><h2>Panel principal</h2></div></div><div class="empty-state"><h3>Bienvenido al sistema</h3><p>Los indicadores estarán disponibles cuando se configure el modelo de datos.</p></div></section>`

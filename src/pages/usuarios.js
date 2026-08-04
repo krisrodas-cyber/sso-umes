@@ -1,0 +1,1 @@
+export const usuariosPage = () => `<section><div class="page-heading"><div><p class="eyebrow">Administración</p><h2>Usuarios</h2></div></div><div class="empty-state"><h3>Gestión de acceso</h3><p>Este módulo administrará los roles administrador, monitora y rrhh.</p></div></section>`

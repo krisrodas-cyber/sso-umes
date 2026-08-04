@@ -1,0 +1,1 @@
+export const reportesPage = () => `<section><div class="page-heading"><div><p class="eyebrow">Análisis</p><h2>Reportes</h2></div></div><div class="empty-state"><h3>Reportes en preparación</h3><p>Los gráficos con Chart.js se crearán cuando existan fuentes de datos definidas.</p></div></section>`

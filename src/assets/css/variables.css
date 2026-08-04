@@ -1,0 +1,13 @@
+:root {
+  --umes-primary: #173f67;
+  --umes-primary-dark: #0f2d4a;
+  --umes-accent: #2d7f73;
+  --umes-bg: #f4f7fa;
+  --umes-surface: #ffffff;
+  --umes-text: #1f2937;
+  --umes-muted: #667085;
+  --umes-border: #dce3ea;
+  --umes-radius: 0.75rem;
+  --umes-shadow: 0 10px 30px rgb(23 63 103 / 8%);
+  --sidebar-width: 16rem;
+}

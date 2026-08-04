@@ -1,0 +1,1 @@
+export const inventarioPage = () => `<section><div class="page-heading"><div><p class="eyebrow">Insumos</p><h2>Inventario</h2></div></div><div class="empty-state"><h3>Módulo inicial</h3><p>El catálogo y las existencias se implementarán al definir las tablas.</p></div></section>`

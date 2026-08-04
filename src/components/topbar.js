@@ -1,0 +1,2 @@
+export const topbar = (title = 'Sistema de Atenciones') => `
+  <header class="app-topbar"><button class="btn btn-outline-secondary d-lg-none" type="button" id="sidebar-toggle" aria-controls="app-sidebar" aria-expanded="false" aria-label="Abrir menú">☰</button><div><p class="eyebrow">Seguridad y Salud Ocupacional</p><h1>${title}</h1></div><span class="user-placeholder" aria-label="Usuario actual">Usuario</span></header>`
