@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sistema de Atenciones SSO UMES
 
 Aplicación web modular para apoyar la gestión de Seguridad y Salud Ocupacional de UMES.
@@ -30,3 +31,7 @@ El código de interfaz se divide en `components`, `pages`, `guards`, `services`,
 - `rrhh`
 
 Los roles se leen desde `app_metadata.role`; la asignación segura deberá realizarse posteriormente desde un entorno administrativo confiable.
+=======
+# sso-umes
+Sistema de registro de atenciones e inventario de SSO UMES
+>>>>>>> d18b57194c5d80ddb641e48e03562a799e5fd2e6
