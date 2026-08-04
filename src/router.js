@@ -3,7 +3,7 @@ import { sidebar } from './components/sidebar.js'
 import { topbar } from './components/topbar.js'
 import { loginPage } from './pages/login.js'
 import { dashboardPage } from './pages/dashboard.js'
-import { nuevaAtencionPage } from './pages/nueva-atencion.js'
+import { nuevaAtencionPage, initNuevaAtencionPage } from './pages/nueva-atencion.js'
 import { atencionesPage } from './pages/atenciones.js'
 import { inventarioPage } from './pages/inventario.js'
 import { movimientosPage } from './pages/movimientos.js'
@@ -104,6 +104,7 @@ export const initRouter = (root) => {
     root.innerHTML = `<div class="app-shell">${sidebar(resolvedPath, session)}<div class="app-column">${topbar(route.title, session)}<main class="app-content">${route.view({ session })}</main></div></div>`
     bindMenu()
     bindLogout()
+    if (resolvedPath === ROUTES.NUEVA_ATENCION) await initNuevaAtencionPage({ session })
   }
 
   window.addEventListener('hashchange', render)

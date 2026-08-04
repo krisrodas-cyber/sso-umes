@@ -1,5 +1,32 @@
 # Sistema de Atenciones SSO UMES
 
+## Pruebas manuales de Nueva atención
+
+Usa cuentas de prueba y datos ficticios no clínicos en desarrollo.
+
+### Monitora
+
+- Visualiza responsable, sede y turno asignados sin poder cambiarlos.
+- Registra una atención sin productos.
+- Registra con producto sin lotes utilizables y con `lote_id` nulo.
+- Registra seleccionando producto y lote utilizable.
+- No puede exceder el inventario general ni la disponibilidad del lote.
+- Un doble clic o segundo envío durante el proceso no crea dos atenciones.
+- Después de guardar no existe opción para editar la atención.
+
+### Administrador
+
+- Selecciona una monitora y registra para ella; sede y turno se completan y bloquean.
+- No puede registrar sin responsable, sede o turno, ni con una combinación incoherente.
+- Puede seleccionarse como responsable y elegir sede y turno.
+
+### RRHH y privacidad
+
+- RRHH no ve el enlace y al abrir `#/nueva-atencion` recibe acceso restringido.
+- Al recargar no se recupera información escrita en el formulario.
+- Local Storage y Session Storage no contienen información personal o clínica.
+- La consola no contiene nombres, payloads, tokens, contraseñas ni claves.
+
 Sistema de registro de atenciones e inventario para apoyar la gestión de Seguridad y Salud Ocupacional de UMES.
 
 ## Tecnologías
