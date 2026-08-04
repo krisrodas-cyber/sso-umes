@@ -1,13 +1,16 @@
 .brand { display: flex; align-items: center; gap: .75rem; padding: 1.25rem; color: #fff; font-weight: 700; text-decoration: none; }
 .brand img { width: 3rem; height: 3rem; object-fit: contain; background: #fff; border-radius: .5rem; padding: .2rem; }
-.app-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 1030; width: var(--sidebar-width); background: var(--umes-primary-dark); transition: transform .2s ease; }
+.app-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 1030; width: var(--sidebar-width); overflow-y: auto; background: var(--umes-primary-dark); transition: transform .2s ease; }
 .app-sidebar .nav { padding: .5rem .75rem; gap: .25rem; }
 .app-sidebar .nav-link { color: rgb(255 255 255 / 78%); border-radius: .5rem; padding: .7rem .85rem; }
 .app-sidebar .nav-link:hover, .app-sidebar .nav-link:focus-visible, .app-sidebar .nav-link.active { color: #fff; background: rgb(255 255 255 / 12%); }
 .app-topbar { min-height: 5.25rem; display: flex; align-items: center; gap: 1rem; justify-content: space-between; padding: 1rem 2rem; background: var(--umes-surface); border-bottom: 1px solid var(--umes-border); }
 .app-topbar h1 { margin: 0; font-size: 1.25rem; color: var(--umes-text); }
 .eyebrow { margin: 0 0 .2rem; color: var(--umes-accent); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.user-placeholder { color: var(--umes-muted); font-size: .875rem; }
+.topbar-title { flex: 1; }
+.topbar-user { display: flex; align-items: center; gap: 1rem; color: var(--umes-muted); font-size: .875rem; text-align: right; }
+.topbar-user span, .topbar-user small { display: block; }
+.topbar-user strong { color: var(--umes-text); font-weight: 600; }
 .page-heading { display: flex; justify-content: space-between; margin-bottom: 1.5rem; }
 .page-heading h2 { margin: 0; color: var(--umes-text); font-size: 1.75rem; }
 .empty-state { padding: clamp(2rem, 8vw, 5rem); text-align: center; background: var(--umes-surface); border: 1px solid var(--umes-border); border-radius: var(--umes-radius); box-shadow: var(--umes-shadow); }
@@ -15,4 +18,5 @@
 .empty-state p { max-width: 38rem; margin: .5rem auto 0; color: var(--umes-muted); }
 .login-card { width: min(100%, 27rem); padding: 2rem; background: var(--umes-surface); border: 1px solid var(--umes-border); border-radius: var(--umes-radius); box-shadow: var(--umes-shadow); }
 .login-logo { display: block; width: 5rem; max-height: 5rem; object-fit: contain; margin-bottom: 1.5rem; }
+.login-card h1 { margin-bottom: .5rem; color: var(--umes-primary-dark); font-size: clamp(1.75rem, 5vw, 2.25rem); }
 .btn-primary { --bs-btn-bg: var(--umes-primary); --bs-btn-border-color: var(--umes-primary); --bs-btn-hover-bg: var(--umes-primary-dark); --bs-btn-hover-border-color: var(--umes-primary-dark); }

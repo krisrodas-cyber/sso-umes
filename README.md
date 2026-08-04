@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # Sistema de Atenciones SSO UMES
 
-Aplicación web modular para apoyar la gestión de Seguridad y Salud Ocupacional de UMES.
+Sistema de registro de atenciones e inventario para apoyar la gestión de Seguridad y Salud Ocupacional de UMES.
 
 ## Tecnologías
 
@@ -31,7 +30,11 @@ El código de interfaz se divide en `components`, `pages`, `guards`, `services`,
 - `rrhh`
 
 Los roles se leen desde `app_metadata.role`; la asignación segura deberá realizarse posteriormente desde un entorno administrativo confiable.
-=======
-# sso-umes
-Sistema de registro de atenciones e inventario de SSO UMES
->>>>>>> d18b57194c5d80ddb641e48e03562a799e5fd2e6
+
+## Navegación y acceso
+
+La página inicial es el inicio de sesión. La aplicación usa rutas hash (`#/ruta`) y una base relativa para funcionar en subrutas de GitHub Pages. En esta etapa, `Usuarios` solo está disponible para `administrador`; `Nueva atención` está disponible para `administrador` y `monitora`. La interfaz inicial no presenta controles de edición o eliminación para `monitora`.
+
+## Estado de esta etapa
+
+Las vistas internas son provisionales y no contienen datos reales ni demostrativos. Tampoco se han creado tablas, migraciones SQL, políticas RLS, semillas ni registros de pacientes.

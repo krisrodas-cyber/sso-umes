@@ -1,6 +1,7 @@
 * { box-sizing: border-box; }
 html { min-width: 320px; background: var(--umes-bg); }
 body { margin: 0; color: var(--umes-text); background: var(--umes-bg); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+img { max-width: 100%; }
 a, button, input { outline-offset: 3px; }
 .app-column { min-height: 100vh; margin-left: var(--sidebar-width); }
 .app-content { padding: clamp(1.25rem, 3vw, 2rem); }
@@ -11,6 +12,12 @@ a, button, input { outline-offset: 3px; }
   .app-column { margin-left: 0; }
   .app-topbar { padding: .8rem 1rem; }
   .app-content { padding: 1rem; }
-  .user-placeholder { display: none; }
+  .topbar-user span { display: none; }
+}
+@media (max-width: 575.98px) {
+  .app-topbar { flex-wrap: wrap; }
+  .topbar-title { order: 3; flex-basis: 100%; }
+  .page-heading h2 { font-size: 1.45rem; }
+  .login-card { padding: 1.5rem; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

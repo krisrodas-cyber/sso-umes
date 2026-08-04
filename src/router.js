@@ -9,10 +9,11 @@ import { inventarioPage } from './pages/inventario.js'
 import { movimientosPage } from './pages/movimientos.js'
 import { reportesPage } from './pages/reportes.js'
 import { usuariosPage } from './pages/usuarios.js'
-import { getSession, signIn } from './services/authService.js'
-import { roleGuard } from './guards/roleGuard.js'
+import { signIn, signOut } from './services/authService.js'
+import { authGuard } from './guards/authGuard.js'
+import { canAccessRoute } from './guards/roleGuard.js'
 import { isSupabaseConfigured } from './config/supabase.js'
-import { ROLES } from './utils/constants.js'
+import { ROUTES } from './utils/constants.js'
 
 const routes = {
   '/dashboard': { title: 'Panel principal', view: dashboardPage },
@@ -20,13 +21,13 @@ const routes = {
   '/atenciones': { title: 'Atenciones', view: atencionesPage },
   '/inventario': { title: 'Inventario', view: inventarioPage },
   '/movimientos': { title: 'Movimientos', view: movimientosPage },
-  '/reportes': { title: 'Reportes', view: reportesPage, roles: Object.values(ROLES) },
-  '/usuarios': { title: 'Usuarios', view: usuariosPage, roles: [ROLES.ADMINISTRADOR] },
+  '/reportes': { title: 'Reportes', view: reportesPage },
+  '/usuarios': { title: 'Usuarios', view: usuariosPage },
 }
 
 const getPath = () => {
   const path = window.location.hash.slice(1).split('?')[0]
-  return path.startsWith('/') ? path : '/dashboard'
+  return path.startsWith('/') ? path : ROUTES.LOGIN
 }
 
 const go = (path) => { window.location.hash = path }
@@ -53,33 +54,41 @@ const bindLogin = () => {
   })
 }
 
+const bindLogout = () => {
+  document.querySelector('#logout-button')?.addEventListener('click', async () => {
+    await signOut()
+    go(ROUTES.LOGIN)
+  })
+}
+
 export const initRouter = (root) => {
   const render = async () => {
     const path = getPath()
-    if (path === '/login') {
+    if (path === ROUTES.LOGIN) {
       root.innerHTML = loginPage()
       bindLogin()
       return
     }
 
-    let session = null
-    try { session = await getSession() } catch (error) { console.error(error) }
-    if (isSupabaseConfigured && !session) {
-      go('/login')
+    const session = await authGuard()
+    if (!isSupabaseConfigured || !session) {
+      go(ROUTES.LOGIN)
       return
     }
 
     const route = routes[path] ?? routes['/dashboard']
-    if (route.roles && session && !roleGuard(session, route.roles)) {
+    const resolvedPath = routes[path] ? path : ROUTES.DASHBOARD
+    if (!canAccessRoute(session, resolvedPath)) {
       root.innerHTML = `<main class="login-page"><section class="login-card"><h1>Acceso restringido</h1><p>Tu rol no tiene acceso a este módulo.</p><a href="#/dashboard" class="btn btn-primary mt-3">Volver al inicio</a></section></main>`
       return
     }
 
-    root.innerHTML = `<div class="app-shell">${sidebar(path)}<div class="app-column">${topbar(route.title)}<main class="app-content">${route.view()}</main></div></div>`
+    root.innerHTML = `<div class="app-shell">${sidebar(resolvedPath, session)}<div class="app-column">${topbar(route.title, session)}<main class="app-content">${route.view({ session })}</main></div></div>`
     bindMenu()
+    bindLogout()
   }
 
   window.addEventListener('hashchange', render)
-  if (!window.location.hash) go('/dashboard')
+  if (!window.location.hash) go(ROUTES.LOGIN)
   else render()
 }

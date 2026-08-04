@@ -17,3 +17,6 @@ export const signOut = async () => {
   const { error } = await supabase.auth.signOut()
   if (error) throw error
 }
+
+export const getUserDisplayName = (session) =>
+  session?.user?.user_metadata?.full_name || session?.user?.email || 'Usuario'
