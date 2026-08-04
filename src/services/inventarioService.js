@@ -6,13 +6,14 @@ export const getInventarioDisponiblePorSede = async (sedeId) => {
   if (!sedeId) return []
   const { data, error } = await supabase
     .from('inventario_sede')
-    .select('producto_id, sede_id, existencia_actual, existencia_minima, productos!inner(id, codigo, nombre, categoria, presentacion, unidad_medida, estado)')
+    .select('producto_id, sede_id, existencia_actual, existencia_minima, productos!inner(id, codigo, nombre, categoria, presentacion, unidad_medida, estado, es_consumible, contenido_por_presentacion, unidad_dispensacion, permite_registro_sin_descuento)')
     .eq('sede_id', sedeId)
     .eq('productos.estado', 'activo')
-    .gt('existencia_actual', 0)
     .order('producto_id')
   throwIfError(error)
-  return (data || []).map(({ productos, ...item }) => ({ ...item, ...productos }))
+  return (data || [])
+    .map(({ productos, ...item }) => ({ ...item, ...productos }))
+    .filter((item) => Number(item.existencia_actual) > 0 || !item.es_consumible || item.permite_registro_sin_descuento)
 }
 
 export const getLotesDisponibles = async (productoId, sedeId) => {

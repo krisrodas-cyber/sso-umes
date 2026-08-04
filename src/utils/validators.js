@@ -19,11 +19,11 @@ export const validateAtencion = (data, { isAdmin = false } = {}) => {
   data.productos.forEach((item, index) => {
     const prefix = `producto-${index}`
     if (!item.producto_id) errors[prefix] = 'Selecciona un producto.'
-    if (item.hasLotes && !item.lote_id) errors[`${prefix}-lote`] = 'Selecciona un lote.'
+    if (!item.sinDescuento && item.hasLotes && !item.lote_id) errors[`${prefix}-lote`] = 'Selecciona un lote.'
     const quantity = Number(item.cantidad)
     if (!Number.isFinite(quantity) || quantity <= 0) errors[`${prefix}-cantidad`] = 'La cantidad debe ser mayor que cero.'
-    else if (quantity > Number(item.existencia_actual)) errors[`${prefix}-cantidad`] = 'Supera la existencia disponible.'
-    else if (item.lote_id && quantity > Number(item.loteCantidad)) errors[`${prefix}-cantidad`] = 'Supera la cantidad disponible del lote.'
+    else if (!item.sinDescuento && quantity > Number(item.existencia_actual)) errors[`${prefix}-cantidad`] = 'Supera la existencia disponible.'
+    else if (!item.sinDescuento && item.lote_id && quantity > Number(item.loteCantidad)) errors[`${prefix}-cantidad`] = 'Supera la cantidad disponible del lote.'
     const key = `${item.producto_id}:${item.lote_id || 'sin-lote'}`
     if (item.producto_id && keys.has(key)) errors[prefix] = 'El producto y lote están repetidos.'
     keys.add(key)

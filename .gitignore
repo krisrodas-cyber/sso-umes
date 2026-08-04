@@ -14,6 +14,7 @@ dist-ssr
 .env
 .env.*
 !.env.example
+data/origen/*.xlsx
 
 # Editor directories and files
 .vscode/*

@@ -1,5 +1,24 @@
 # Sistema de Atenciones SSO UMES
 
+## Control de productos e inventario inicial
+
+La existencia inicial por sede se toma exclusivamente de **Stock para el semestre Z3** y **Stock para el semestre Z9**; no se suma con Cantidad ni con Ingreso Febrero. El mínimo inicial se calcula por sede como el 20 % de la existencia, redondeado hacia arriba y con mínimo absoluto de 1. Para insumos se conserva el mínimo numérico explícito del Excel cuando existe.
+
+Los productos consumibles descuentan inventario y lote mediante `registrar_atencion`. Los reutilizables o productos autorizados para registro sin descuento aparecen en el detalle de la atención, pero no actualizan inventario, lote ni generan un movimiento de salida. La RPC decide el comportamiento usando `es_consumible` y `permite_registro_sin_descuento`; el cliente no escribe directamente en las tablas.
+
+Los productos totalmente vencidos conservan su producto y existencia utilizable 0. Solo se preparan lotes históricos vencidos cuando fecha y sede son inequívocas. Las fechas o distribuciones ambiguas permanecen en `data/procesado/pendientes_revision.csv`.
+
+`contenido_por_presentacion` documenta contenido interno conocido, pero la carga inicial no multiplica existencias. Deben revisarse especialmente cajas y paquetes cuando el inventario está expresado en presentaciones y las atenciones probablemente registren unidades internas.
+
+Orden de ejecución para una instalación nueva:
+
+1. `supabase/migrations/001_initial_schema.sql`
+2. `supabase/seed/001_catalogos.sql`
+3. `supabase/migrations/002_product_control_fields.sql`
+4. `supabase/seed/002_productos_inventario.sql`
+
+El último seed debe revisarse antes de ejecutarse; no crea perfiles, usuarios ni movimientos de inventario inicial.
+
 ## Pruebas manuales de Nueva atención
 
 Usa cuentas de prueba y datos ficticios no clínicos en desarrollo.

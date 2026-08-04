@@ -1,0 +1,2 @@
+codigo_producto,codigo_sede,numero_lote,fecha_vencimiento,cantidad_disponible,estado,valor_original_fecha,valor_original_cantidad,hoja_origen,fila_origen,requiere_revision
+MED-AUTO-068,Z3,,2026-07-20,0,vencido,2026-07-20,4 VENCEN 20/07/2026,Inventario Medicamento,70,false

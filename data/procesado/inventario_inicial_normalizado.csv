@@ -1,0 +1,257 @@
+codigo_producto,codigo_sede,existencia_actual,existencia_minima,origen_minimo,porcentaje_minimo_aplicado,valor_original,hoja_origen,fila_origen,interpretacion,requiere_revision
+31A,Z9,272,55,calculado_20_por_ciento,20,272,Inventario Medicamento,3,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+31A,Z3,26,6,calculado_20_por_ciento,20,26,Inventario Medicamento,3,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+8A,Z9,677,136,calculado_20_por_ciento,20,677,Inventario Medicamento,4,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+8A,Z3,500,100,calculado_20_por_ciento,20,500,Inventario Medicamento,4,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+22A,Z9,167,34,calculado_20_por_ciento,20,167,Inventario Medicamento,5,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+22A,Z3,46,10,calculado_20_por_ciento,20,46,Inventario Medicamento,5,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+9A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,6,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+9A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,6,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+38A,Z9,27,6,calculado_20_por_ciento,20,27,Inventario Medicamento,7,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+38A,Z3,86,18,calculado_20_por_ciento,20,86,Inventario Medicamento,7,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+3A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,8,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+3A,Z3,21,5,calculado_20_por_ciento,20,21 tab,Inventario Medicamento,8,Cantidad numérica extraída de texto inequívoco. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+33A,Z9,103,21,calculado_20_por_ciento,20,103,Inventario Medicamento,9,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+33A,Z3,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,9,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+57A,Z9,10,2,calculado_20_por_ciento,20,10,Inventario Medicamento,10,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+57A,Z3,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,10,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+12A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,11,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+12A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,11,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+47A,Z9,14,3,calculado_20_por_ciento,20,14,Inventario Medicamento,12,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+47A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,12,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+19A,Z9,107,22,calculado_20_por_ciento,20,107,Inventario Medicamento,13,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+19A,Z3,13,3,calculado_20_por_ciento,20,13,Inventario Medicamento,13,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+48A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,14,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+48A,Z3,11,3,calculado_20_por_ciento,20,11,Inventario Medicamento,14,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+59A,Z9,50,10,calculado_20_por_ciento,20,50,Inventario Medicamento,15,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+59A,Z3,105,21,calculado_20_por_ciento,20,105,Inventario Medicamento,15,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+49A,Z9,32,7,calculado_20_por_ciento,20,32,Inventario Medicamento,16,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+49A,Z3,8,2,calculado_20_por_ciento,20,8,Inventario Medicamento,16,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+50A,Z9,53,11,calculado_20_por_ciento,20,53,Inventario Medicamento,17,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+50A,Z3,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,17,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-016,Z9,31,7,calculado_20_por_ciento,20,31,Inventario Medicamento,18,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+MED-AUTO-016,Z3,29,6,calculado_20_por_ciento,20,29,Inventario Medicamento,18,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+11A,Z9,3,1,calculado_20_por_ciento,20,3 en uso,Inventario Medicamento,19,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+11A,Z3,3,1,calculado_20_por_ciento,20,2N y 1 en uso,Inventario Medicamento,19,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+39A,Z9,42,9,calculado_20_por_ciento,20,42,Inventario Medicamento,20,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+39A,Z3,54,11,calculado_20_por_ciento,20,54,Inventario Medicamento,20,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-019,Z9,10,2,calculado_20_por_ciento,20,10,Inventario Medicamento,21,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+MED-AUTO-019,Z3,7,2,calculado_20_por_ciento,20,7,Inventario Medicamento,21,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+7A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,22,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+7A,Z3,2,1,calculado_20_por_ciento,20,2,Inventario Medicamento,22,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+21A,Z9,125,25,calculado_20_por_ciento,20,125,Inventario Medicamento,23,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+21A,Z3,80,16,calculado_20_por_ciento,20,80,Inventario Medicamento,23,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+36A,Z9,154,31,calculado_20_por_ciento,20,154,Inventario Medicamento,24,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+36A,Z3,80,16,calculado_20_por_ciento,20,80,Inventario Medicamento,24,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-023,Z9,99,20,calculado_20_por_ciento,20,99,Inventario Medicamento,25,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+MED-AUTO-023,Z3,69,14,calculado_20_por_ciento,20,69,Inventario Medicamento,25,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+32A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,26,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+32A,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,26,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+40A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,27,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+40A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,27,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-026,Z9,350,70,calculado_20_por_ciento,20,350,Inventario Medicamento,28,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+MED-AUTO-026,Z3,107,22,calculado_20_por_ciento,20,107,Inventario Medicamento,28,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+42A,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,29,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+42A,Z3,,,calculado_20_por_ciento,20,,Inventario Medicamento,29,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+MED-AUTO-028,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,30,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-028,Z3,,,calculado_20_por_ciento,20,,Inventario Medicamento,30,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+44A,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,31,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+44A,Z3,,,calculado_20_por_ciento,20,,Inventario Medicamento,31,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+45A,Z9,328,66,calculado_20_por_ciento,20,328,Inventario Medicamento,32,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+45A,Z3,,,calculado_20_por_ciento,20,,Inventario Medicamento,32,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+46A,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,33,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+46A,Z3,,,calculado_20_por_ciento,20,,Inventario Medicamento,33,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+43A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,34,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+43A,Z3,0,1,calculado_20_por_ciento,20,1 vencido,Inventario Medicamento,34,Toda la cantidad indicada está vencida; existencia utilizable: 0. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+34A,Z9,10,2,calculado_20_por_ciento,20,10,Inventario Medicamento,35,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+34A,Z3,9,2,calculado_20_por_ciento,20,9,Inventario Medicamento,35,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-034,Z9,120,24,calculado_20_por_ciento,20,120,Inventario Medicamento,36,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+MED-AUTO-034,Z3,154,31,calculado_20_por_ciento,20,154,Inventario Medicamento,36,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+23A,Z9,1291,259,calculado_20_por_ciento,20,1291,Inventario Medicamento,37,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+23A,Z3,146,30,calculado_20_por_ciento,20,146,Inventario Medicamento,37,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+55A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,38,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+55A,Z3,1,1,calculado_20_por_ciento,20,1 N,Inventario Medicamento,38,Cantidad numérica extraída de texto inequívoco. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+6A,Z9,424,85,calculado_20_por_ciento,20,424,Inventario Medicamento,39,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+6A,Z3,704,141,calculado_20_por_ciento,20,704,Inventario Medicamento,39,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+51A,Z9,194,39,calculado_20_por_ciento,20,194,Inventario Medicamento,40,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+51A,Z3,34,7,calculado_20_por_ciento,20,34,Inventario Medicamento,40,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+30A,Z9,60,12,calculado_20_por_ciento,20,60,Inventario Medicamento,41,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+30A,Z3,38,8,calculado_20_por_ciento,20,38,Inventario Medicamento,41,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+16A,Z9,75,15,calculado_20_por_ciento,20,75,Inventario Medicamento,42,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+16A,Z3,140,28,calculado_20_por_ciento,20,140,Inventario Medicamento,42,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+37A,Z9,92,19,calculado_20_por_ciento,20,92,Inventario Medicamento,43,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+37A,Z3,29,6,calculado_20_por_ciento,20,29,Inventario Medicamento,43,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+52A,Z9,26,6,calculado_20_por_ciento,20,26,Inventario Medicamento,44,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+52A,Z3,15,3,calculado_20_por_ciento,20,15,Inventario Medicamento,44,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+28A,Z9,217,44,calculado_20_por_ciento,20,217,Inventario Medicamento,45,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+28A,Z3,186,38,calculado_20_por_ciento,20,186,Inventario Medicamento,45,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-044,Z9,293,59,calculado_20_por_ciento,20,293,Inventario Medicamento,46,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+MED-AUTO-044,Z3,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,46,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+58A,Z9,26,6,calculado_20_por_ciento,20,26,Inventario Medicamento,47,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+58A,Z3,20,4,calculado_20_por_ciento,20,20,Inventario Medicamento,47,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+29A,Z9,366,74,calculado_20_por_ciento,20,366,Inventario Medicamento,48,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+29A,Z3,177,36,calculado_20_por_ciento,20,177,Inventario Medicamento,48,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+20A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,49,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+20A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,49,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+35A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,50,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+35A,Z3,103,21,calculado_20_por_ciento,20,103,Inventario Medicamento,50,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+1A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,51,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+1A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,51,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+4A,Z9,4,1,calculado_20_por_ciento,20,4,Inventario Medicamento,52,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+4A,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,52,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+10A,Z9,50,10,calculado_20_por_ciento,20,50,Inventario Medicamento,53,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+10A,Z3,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,53,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+60A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,54,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+60A,Z3,9,2,calculado_20_por_ciento,20,9,Inventario Medicamento,54,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+18A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,55,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+18A,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Medicamento,55,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+24A,Z9,80,16,calculado_20_por_ciento,20,80,Inventario Medicamento,56,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+24A,Z3,81,17,calculado_20_por_ciento,20,81,Inventario Medicamento,56,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+15A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,57,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+15A,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,57,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+17A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,58,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+17A,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,58,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+26A,Z9,10,2,calculado_20_por_ciento,20,10,Inventario Medicamento,59,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+26A,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,59,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+2A,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Medicamento,60,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+2A,Z3,23,5,calculado_20_por_ciento,20,23,Inventario Medicamento,60,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+53A,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Medicamento,61,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+53A,Z3,0,1,calculado_20_por_ciento,20,2 vencidos,Inventario Medicamento,61,Toda la cantidad indicada está vencida; existencia utilizable: 0. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+54A,Z9,10,2,calculado_20_por_ciento,20,10,Inventario Medicamento,62,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+54A,Z3,16,4,calculado_20_por_ciento,20,16,Inventario Medicamento,62,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+27A,Z9,211,43,calculado_20_por_ciento,20,211,Inventario Medicamento,63,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+27A,Z3,163,33,calculado_20_por_ciento,20,163,Inventario Medicamento,63,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+13A,Z9,3,1,calculado_20_por_ciento,20,3 en uso,Inventario Medicamento,64,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+13A,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,64,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+5A,Z9,120,24,calculado_20_por_ciento,20,120,Inventario Medicamento,65,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+5A,Z3,24,5,calculado_20_por_ciento,20,24,Inventario Medicamento,65,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+14A,Z9,200,40,calculado_20_por_ciento,20,200,Inventario Medicamento,66,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+14A,Z3,106,22,calculado_20_por_ciento,20,106,Inventario Medicamento,66,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+25A,Z9,209,42,calculado_20_por_ciento,20,209,Inventario Medicamento,67,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+25A,Z3,53,11,calculado_20_por_ciento,20,53,Inventario Medicamento,67,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+56A,Z9,32,7,calculado_20_por_ciento,20,32,Inventario Medicamento,68,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+56A,Z3,0,1,calculado_20_por_ciento,20,22 vencidas,Inventario Medicamento,68,Toda la cantidad indicada está vencida; existencia utilizable: 0. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+MED-AUTO-067,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,69,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-067,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,69,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-068,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,70,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-068,Z3,0,1,calculado_20_por_ciento,20,4 VENCEN 20/07/2026,Inventario Medicamento,70,4 unidad(es) vencidas el 2026-07-20; existencia utilizable: 0. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+MED-AUTO-069,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,71,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-069,Z3,157,32,calculado_20_por_ciento,20,157,Inventario Medicamento,71,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-070,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,72,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-070,Z3,160,32,calculado_20_por_ciento,20,160,Inventario Medicamento,72,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-071,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,73,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-071,Z3,28,6,calculado_20_por_ciento,20,28,Inventario Medicamento,73,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-072,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,74,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-072,Z3,1,1,calculado_20_por_ciento,20,1N ,Inventario Medicamento,74,Cantidad numérica extraída de texto inequívoco. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-073,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,75,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-073,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Medicamento,75,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-074,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,76,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-074,Z3,1,1,calculado_20_por_ciento,20,1N,Inventario Medicamento,76,Cantidad numérica extraída de texto inequívoco. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-075,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,77,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-075,Z3,1,1,calculado_20_por_ciento,20,1N,Inventario Medicamento,77,Cantidad numérica extraída de texto inequívoco. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+MED-AUTO-076,Z9,,,calculado_20_por_ciento,20,,Inventario Medicamento,78,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+MED-AUTO-076,Z3,32,7,calculado_20_por_ciento,20,32,Inventario Medicamento,78,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+1B,Z9,1,1,excel,0,1 en uso,Inventario Insumo,4,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+1B,Z3,2,1,excel,0,2,Inventario Insumo,4,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+2B,Z9,0,1,excel,0,0,Inventario Insumo,5,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+2B,Z3,114,1,excel,0,114,Inventario Insumo,5,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+3B,Z9,117,1,excel,0,117,Inventario Insumo,6,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+3B,Z3,125,1,excel,0,125,Inventario Insumo,6,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+4B,Z9,3,1,excel,0,3 en uso,Inventario Insumo,7,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+4B,Z3,1,1,excel,0,1,Inventario Insumo,7,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-005,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,8,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-005,Z3,1,1,calculado_20_por_ciento,20,1,Inventario Insumo,8,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+5B,Z9,2,2,excel,0,2 en uso,Inventario Insumo,9,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+5B,Z3,1,2,excel,0,1,Inventario Insumo,9,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+6B,Z9,5,10,excel,0,5,Inventario Insumo,10,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+6B,Z3,4,10,excel,0,4,Inventario Insumo,10,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+7B,Z9,14,25,excel,0,14,Inventario Insumo,11,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+7B,Z3,42,25,excel,0,42,Inventario Insumo,11,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-009,Z9,19,25,excel,0,19,Inventario Insumo,12,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-009,Z3,21,25,excel,0,21,Inventario Insumo,12,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-010,Z9,19,10,excel,0,19,Inventario Insumo,13,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-010,Z3,25,10,excel,0,25,Inventario Insumo,13,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-011,Z9,2,3,excel,0,2 en uso,Inventario Insumo,14,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-011,Z3,3,3,excel,0,3,Inventario Insumo,14,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+8B,Z9,2,4,excel,0,2 en uso,Inventario Insumo,15,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+8B,Z3,1,4,excel,0,1,Inventario Insumo,15,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-013,Z9,11,3,calculado_20_por_ciento,20,11,Inventario Insumo,16,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-013,Z3,3,1,calculado_20_por_ciento,20,3,Inventario Insumo,16,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+9B,Z9,0,2,excel,0,0,Inventario Insumo,17,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+9B,Z3,,2,excel,0,En uso,Inventario Insumo,17,“En uso” no incluye cantidad; no se asume una unidad. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+10B,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Insumo,18,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+10B,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Insumo,18,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+11B,Z9,2,1,calculado_20_por_ciento,20,2 en uso,Inventario Insumo,19,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+11B,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Insumo,19,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-017,Z9,0,2,excel,0,0,Inventario Insumo,20,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-017,Z3,2,2,excel,0,1 N y 1 en uso,Inventario Insumo,20,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-018,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,21,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-018,Z3,2,1,calculado_20_por_ciento,20,1N y 1 en uso,Inventario Insumo,21,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+12B,Z9,15,10,excel,0,15,Inventario Insumo,22,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+12B,Z3,32,10,excel,0,32,Inventario Insumo,22,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-020,Z9,17,25,excel,0,17,Inventario Insumo,23,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-020,Z3,26,25,excel,0,26,Inventario Insumo,23,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-021,Z9,10,20,excel,0,10,Inventario Insumo,24,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-021,Z3,18,20,excel,0,18,Inventario Insumo,24,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-022,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,25,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-022,Z3,38,8,calculado_20_por_ciento,20,38,Inventario Insumo,25,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+13B,Z9,6,2,calculado_20_por_ciento,20,6,Inventario Insumo,26,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+13B,Z3,15,3,calculado_20_por_ciento,20,15,Inventario Insumo,26,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-024,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,27,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-024,Z3,7,2,calculado_20_por_ciento,20,7,Inventario Insumo,27,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-025,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,28,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-025,Z3,3,1,calculado_20_por_ciento,20,3,Inventario Insumo,28,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-026,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,29,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-026,Z3,10,2,calculado_20_por_ciento,20,10,Inventario Insumo,29,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+14B,Z9,200,300,excel,0,200,Inventario Insumo,30,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+14B,Z3,2,300,excel,0,1 N y 1 en uso,Inventario Insumo,30,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-028,Z9,,,calculado_20_por_ciento,20,,Inventario Insumo,31,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z9.,true
+INS-AUTO-028,Z3,13,3,calculado_20_por_ciento,20,13,Inventario Insumo,31,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+15B,Z9,105,21,calculado_20_por_ciento,20,105,Inventario Insumo,32,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+15B,Z3,66,14,calculado_20_por_ciento,20,66,Inventario Insumo,32,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+16B,Z9,20,40,excel,0,20,Inventario Insumo,33,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+16B,Z3,17,40,excel,0,17,Inventario Insumo,33,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-031,Z9,82,100,excel,0,82,Inventario Insumo,34,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-031,Z3,140,100,excel,0,140,Inventario Insumo,34,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-032,Z9,22,100,excel,0,22,Inventario Insumo,35,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-032,Z3,195,100,excel,0,195,Inventario Insumo,35,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+17B,Z9,139,100,excel,0,139,Inventario Insumo,36,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+17B,Z3,249,100,excel,0,249,Inventario Insumo,36,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+18B,Z9,650,130,calculado_20_por_ciento,20,650,Inventario Insumo,37,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+18B,Z3,194,39,calculado_20_por_ciento,20,194,Inventario Insumo,37,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+19B,Z9,2,1,calculado_20_por_ciento,20,2 en  uso,Inventario Insumo,38,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+19B,Z3,1,1,calculado_20_por_ciento,20,1 en uso,Inventario Insumo,38,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+20B,Z9,4,10,excel,0,4,Inventario Insumo,39,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+20B,Z3,6,10,excel,0,4 N y 2 en uso,Inventario Insumo,39,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+21B,Z9,0,2,excel,0,0,Inventario Insumo,40,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+21B,Z3,,2,excel,0,En uso,Inventario Insumo,40,“En uso” no incluye cantidad; no se asume una unidad. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+22B,Z9,2,6,excel,0,2,Inventario Insumo,41,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+22B,Z3,3,6,excel,0,3,Inventario Insumo,41,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+23B,Z9,0,1,calculado_20_por_ciento,20,0,Inventario Insumo,42,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+23B,Z3,3,1,calculado_20_por_ciento,20,2 N y 1 en uso,Inventario Insumo,42,Suma aprobada de unidades N y unidades en uso. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+24B,Z9,1,1,excel,0,1 en uso,Inventario Insumo,43,Cantidad numérica en uso contada como disponible según decisión institucional. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+24B,Z3,,1,excel,0,En uso,Inventario Insumo,43,“En uso” no incluye cantidad; no se asume una unidad. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+25B,Z9,0,10,excel,0,0,Inventario Insumo,44,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+25B,Z3,6,10,excel,0,6,Inventario Insumo,44,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+26B,Z9,13,5,excel,0,13,Inventario Insumo,45,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+26B,Z3,6,5,excel,0,6,Inventario Insumo,45,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+INS-AUTO-043,Z9,8,40,excel,0,8,Inventario Insumo,46,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+INS-AUTO-043,Z3,7,40,excel,0,7,Inventario Insumo,46,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+27B,Z9,20,20,excel,0,20,Inventario Insumo,47,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+27B,Z3,35,20,excel,0,35,Inventario Insumo,47,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+28B,Z9,0,1,excel,0,0,Inventario Insumo,48,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+28B,Z3,,1,excel,0,En uso,Inventario Insumo,48,“En uso” no incluye cantidad; no se asume una unidad. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+29B,Z9,148,30,calculado_20_por_ciento,20,148,Inventario Insumo,49,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+29B,Z3,,,calculado_20_por_ciento,20,,Inventario Insumo,49,Valor vacío; no se asume cero. Existencia tomada definitivamente de Stock para el semestre Z3.,true
+30B,Z9,248,50,calculado_20_por_ciento,20,248,Inventario Insumo,50,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+30B,Z3,344,69,calculado_20_por_ciento,20,344,Inventario Insumo,50,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+31B,Z9,6,24,excel,0,6,Inventario Insumo,51,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+31B,Z3,8,24,excel,0,8,Inventario Insumo,51,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+32B,Z9,12,15,excel,0,12,Inventario Insumo,52,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+32B,Z3,22,15,excel,0,22,Inventario Insumo,52,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+33B,Z9,80,95,excel,0,80,Inventario Insumo,53,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+33B,Z3,20,95,excel,0,20,Inventario Insumo,53,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+34B,Z9,0,15,excel,0,0,Inventario Insumo,54,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+34B,Z3,27,15,excel,0,27,Inventario Insumo,54,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
+35B,Z9,9,40,excel,0,9,Inventario Insumo,55,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z9.,false
+35B,Z3,17,40,excel,0,17,Inventario Insumo,55,Stock para el semestre confirmado; valor numérico usado directamente. Existencia tomada definitivamente de Stock para el semestre Z3.,false
