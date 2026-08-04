@@ -32,6 +32,17 @@ const getPath = () => {
 
 const go = (path) => { window.location.hash = path }
 
+const escapeHtml = (value) => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;')
+
+const renderAuthError = (root, message) => {
+  root.innerHTML = `<main class="login-page"><section class="login-card"><h1>No fue posible validar el acceso</h1><p>${escapeHtml(message)}</p><a href="#/login" class="btn btn-primary mt-3">Volver al inicio de sesión</a></section></main>`
+}
+
 const bindMenu = () => {
   const button = document.querySelector('#sidebar-toggle')
   button?.addEventListener('click', () => {
@@ -47,7 +58,7 @@ const bindLogin = () => {
     const data = new FormData(event.currentTarget)
     try {
       await signIn(data.get('email'), data.get('password'))
-      go('/dashboard')
+      go(ROUTES.DASHBOARD)
     } catch (error) {
       Swal.fire({ icon: 'error', title: 'No fue posible ingresar', text: error.message })
     }
@@ -70,7 +81,14 @@ export const initRouter = (root) => {
       return
     }
 
-    const session = await authGuard()
+    let session
+    try {
+      session = await authGuard()
+    } catch (error) {
+      console.error('No fue posible validar la sesión o el perfil.', error)
+      renderAuthError(root, error.message || 'No se pudo validar el acceso del usuario.')
+      return
+    }
     if (!isSupabaseConfigured || !session) {
       go(ROUTES.LOGIN)
       return

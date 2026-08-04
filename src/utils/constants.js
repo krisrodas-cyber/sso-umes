@@ -2,9 +2,9 @@ export const ROLES = Object.freeze({ ADMINISTRADOR: 'administrador', MONITORA: '
 export const APP_NAME = 'Sistema de Atenciones SSO UMES'
 export const ROUTES = Object.freeze({ LOGIN: '/login', DASHBOARD: '/dashboard', NUEVA_ATENCION: '/nueva-atencion', ATENCIONES: '/atenciones', INVENTARIO: '/inventario', MOVIMIENTOS: '/movimientos', REPORTES: '/reportes', USUARIOS: '/usuarios' })
 export const ROLE_LABELS = Object.freeze({
-  [ROLES.ADMINISTRADOR]: 'Administrador',
-  [ROLES.MONITORA]: 'Monitora',
-  [ROLES.RRHH]: 'Recursos Humanos',
+  [ROLES.ADMINISTRADOR]: 'administrador',
+  [ROLES.MONITORA]: 'monitora',
+  [ROLES.RRHH]: 'recursos Humanos',
 })
 
 export const ROUTE_ROLES = Object.freeze({
@@ -13,6 +13,6 @@ export const ROUTE_ROLES = Object.freeze({
   [ROUTES.ATENCIONES]: Object.values(ROLES),
   [ROUTES.INVENTARIO]: Object.values(ROLES),
   [ROUTES.MOVIMIENTOS]: Object.values(ROLES),
-  [ROUTES.REPORTES]: Object.values(ROLES),
+  [ROUTES.REPORTES]: [ROLES.ADMINISTRADOR, ROLES.RRHH],
   [ROUTES.USUARIOS]: [ROLES.ADMINISTRADOR],
 })
