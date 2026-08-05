@@ -32,6 +32,24 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Verificar variables de Supabase
+        shell: bash
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          if [ -z "$VITE_SUPABASE_URL" ]; then
+            echo "ERROR: VITE_SUPABASE_URL está vacía o no está disponible."
+            exit 1
+          fi
+
+          if [ -z "$VITE_SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "ERROR: VITE_SUPABASE_PUBLISHABLE_KEY está vacía o no está disponible."
+            exit 1
+          fi
+
+          echo "Las variables de Supabase están disponibles."
+
       - name: Compilar aplicación
         run: npm run build
         env:
