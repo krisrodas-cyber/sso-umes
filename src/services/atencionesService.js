@@ -33,4 +33,11 @@ export const registrarAtencion = async (payload) => {
   return { id: record.id, codigo: record.codigo }
 }
 
-export const atencionesService = Object.freeze({ registrarAtencion })
+export const getAtencionesDelDia = async () => {
+  const day = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Guatemala' })
+  const { count, error } = await supabase.from('atenciones').select('id', { count: 'exact', head: true }).gte('fecha_hora', `${day}T00:00:00-06:00`).lte('fecha_hora', `${day}T23:59:59-06:00`)
+  if (error) throw error
+  return count || 0
+}
+
+export const atencionesService = Object.freeze({ registrarAtencion, getAtencionesDelDia })

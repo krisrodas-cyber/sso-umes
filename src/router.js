@@ -2,11 +2,11 @@ import Swal from 'sweetalert2'
 import { sidebar } from './components/sidebar.js'
 import { topbar } from './components/topbar.js'
 import { loginPage } from './pages/login.js'
-import { dashboardPage } from './pages/dashboard.js'
+import { dashboardPage, initDashboardPage } from './pages/dashboard.js'
 import { nuevaAtencionPage, initNuevaAtencionPage } from './pages/nueva-atencion.js'
 import { atencionesPage } from './pages/atenciones.js'
-import { inventarioPage } from './pages/inventario.js'
-import { movimientosPage } from './pages/movimientos.js'
+import { inventarioPage, initInventarioPage } from './pages/inventario.js'
+import { movimientosPage, initMovimientosPage } from './pages/movimientos.js'
 import { reportesPage } from './pages/reportes.js'
 import { usuariosPage } from './pages/usuarios.js'
 import { signIn, signOut } from './services/authService.js'
@@ -105,6 +105,9 @@ export const initRouter = (root) => {
     bindMenu()
     bindLogout()
     if (resolvedPath === ROUTES.NUEVA_ATENCION) await initNuevaAtencionPage({ session })
+    if (resolvedPath === ROUTES.INVENTARIO) await initInventarioPage({ session })
+    if (resolvedPath === ROUTES.MOVIMIENTOS) await initMovimientosPage({ session })
+    if (resolvedPath === ROUTES.DASHBOARD) await initDashboardPage({ session })
   }
 
   window.addEventListener('hashchange', render)

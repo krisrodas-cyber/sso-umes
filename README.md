@@ -1,5 +1,33 @@
 # Sistema de Atenciones SSO UMES
 
+## Pruebas manuales de Inventario, Movimientos y Dashboard
+
+### Inventario
+
+- Una monitora solo ve y puede consultar su sede asignada.
+- RRHH y administrador pueden consultar ambas sedes y la opción Todas las sedes.
+- Búsqueda, sede, categoría, estado y tipo de control funcionan combinados.
+- Agotados y existencias bajas coinciden con existencia actual y mínima.
+- Los reutilizables aparecen identificados como “Reutilizable / sin descuento”.
+- No aparecen botones para editar, eliminar o ajustar inventario.
+- Los vencimientos y sus filtros respetan RLS.
+
+### Movimientos
+
+- Un consumible usado aparece como Salida por atención.
+- Un reutilizable registrado en una atención no genera movimiento.
+- Una monitora solo ve movimientos propios o vinculados a sus atenciones según RLS.
+- RRHH y administrador ven todos los movimientos permitidos.
+- La atención aparece mediante su código y nunca mediante el nombre del paciente.
+- Los filtros de fecha, sede, tipo, producto y código de atención funcionan.
+- La paginación conserva el orden del movimiento más reciente al más antiguo.
+
+### Dashboard
+
+- Los indicadores coinciden con Inventario para el alcance permitido por RLS.
+- Las alertas muestran agotados antes de existencias bajas.
+- “Ver inventario completo” abre el módulo Inventario.
+
 ## Control de productos e inventario inicial
 
 La existencia inicial por sede se toma exclusivamente de **Stock para el semestre Z3** y **Stock para el semestre Z9**; no se suma con Cantidad ni con Ingreso Febrero. El mínimo inicial se calcula por sede como el 20 % de la existencia, redondeado hacia arriba y con mínimo absoluto de 1. Para insumos se conserva el mínimo numérico explícito del Excel cuando existe.
