@@ -22,12 +22,12 @@ export const movimientosPage = ({ session }) => `<section class="data-page"><div
     <div class="col-md-4"><label class="form-label" for="move-product">Producto</label><select class="form-select" id="move-product" name="productoId"><option value="">Todos</option></select></div>
     <div class="col-md-4"><label class="form-label" for="move-attention">Código de atención</label><input class="form-control" id="move-attention" name="codigoAtencion" value="" placeholder="ATE-AAAA-000000"></div>
     <div class="col-md-4"><label class="form-label" for="move-search">Buscar producto u observación</label><input class="form-control" id="move-search" name="busqueda"></div>
-    <div class="col-12"><button class="btn btn-outline-secondary" id="movement-clear" type="button">Limpiar filtros</button></div>
+    <div class="col-12 d-flex gap-2"><button class="btn btn-primary" id="movement-apply" type="submit">Aplicar filtros</button><button class="btn btn-outline-secondary" id="movement-clear" type="button">Limpiar filtros</button></div>
   </form></section>
   <section class="data-panel"><div id="movement-status" class="loading-state" aria-live="polite">Consultando movimientos…</div><div id="movement-results"></div><div id="movement-pagination" class="pagination-bar"></div></section></section>`
 
 export const initMovimientosPage = async ({ session }) => {
-  console.debug('[movimientos] initMovimientos')
+  console.debug('[Movimientos] inicio')
   const root = document.querySelector('.data-page')
   if (!root) {
     console.debug('[movimientos] error', safeError(new Error('No se encontró el contenedor de la página.')))
@@ -44,24 +44,42 @@ export const initMovimientosPage = async ({ session }) => {
     if ($('move-adjustments')) $('move-adjustments').textContent = adjustments
     if ($('move-products')) $('move-products').textContent = products
   }
+  const updateMetrics = (rows = []) => {
+    try {
+      const day = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Guatemala' })
+      const todayRows = rows.filter((item) => {
+        const date = new Date(item.created_at)
+        return !Number.isNaN(date.getTime()) && date.toLocaleDateString('en-CA', { timeZone: 'America/Guatemala' }) === day
+      })
+      setMetrics({ today: todayRows.length, outputs: rows.filter((item) => item.tipo === 'salida_atencion').length, inputs: rows.filter((item) => item.tipo === 'ingreso').length, adjustments: rows.filter((item) => ['ajuste_positivo','ajuste_negativo'].includes(item.tipo)).length, products: new Set(rows.map((item) => item.producto_id)).size })
+    } catch (error) {
+      console.debug('[Movimientos] error de indicadores', safeError(error))
+      setMetrics()
+    }
+  }
   const render = (result) => {
-    $('movement-status').textContent = result.count ? `${result.count} movimiento(s) encontrados.` : 'No hay movimientos que coincidan con los filtros.'
+    const total = Number.isFinite(result.total) ? result.total : 0
+    const totalPages = Math.ceil(total / limit)
+    $('movement-status').textContent = total ? `${total} movimiento(s) encontrados.` : 'No hay movimientos que coincidan con los filtros.'
     $('movement-results').innerHTML = result.data.length ? `<div class="desktop-table"><table class="table align-middle"><thead><tr><th>Fecha y hora</th><th>Producto</th><th>Sede</th><th>Tipo</th><th>Cantidad</th><th>Anterior</th><th>Posterior</th><th>Responsable</th><th>Atención</th><th>Observaciones</th></tr></thead><tbody>${result.data.map((x) => `<tr><td>${formatDateTime(x.created_at)}</td><td>${escapeHtml(x.codigo_producto)} · ${escapeHtml(x.producto)}</td><td>${escapeHtml(x.sede)}</td><td>${formatMovementType(x.tipo)}</td><td>${formatQuantity(x.cantidad)}</td><td>${formatQuantity(x.existencia_anterior)}</td><td>${formatQuantity(x.existencia_posterior)}</td><td>${escapeHtml(x.responsable)}</td><td>${escapeHtml(x.codigo_atencion || '—')}</td><td>${escapeHtml(x.observaciones || '—')}</td></tr>`).join('')}</tbody></table></div><div class="mobile-cards">${result.data.map((x) => `<article class="data-card"><h4>${escapeHtml(x.codigo_producto)} · ${escapeHtml(x.producto)}</h4><p>${formatDateTime(x.created_at)} · ${escapeHtml(x.sede)}</p><span class="status-badge status-normal">${formatMovementType(x.tipo)}</span><dl><div><dt>Cantidad</dt><dd>${formatQuantity(x.cantidad)}</dd></div><div><dt>Existencia</dt><dd>${formatQuantity(x.existencia_anterior)} → ${formatQuantity(x.existencia_posterior)}</dd></div><div><dt>Responsable</dt><dd>${escapeHtml(x.responsable)}</dd></div><div><dt>Atención</dt><dd>${escapeHtml(x.codigo_atencion || '—')}</dd></div><div><dt>Observaciones</dt><dd>${escapeHtml(x.observaciones || '—')}</dd></div></dl></article>`).join('')}</div>` : ''
-    const pages = Math.ceil(result.count / limit); $('movement-pagination').innerHTML = pages > 1 ? `<button class="btn btn-sm btn-outline-secondary" data-page="${page - 1}" ${page === 1 ? 'disabled' : ''}>Anterior</button><span>Página ${page} de ${pages}</span><button class="btn btn-sm btn-outline-secondary" data-page="${page + 1}" ${page === pages ? 'disabled' : ''}>Siguiente</button>` : ''
+    $('movement-pagination').innerHTML = totalPages > 1 ? `<button class="btn btn-sm btn-outline-secondary" data-page="${page - 1}" ${page === 1 ? 'disabled' : ''}>Anterior</button><span>Página ${page} de ${totalPages}</span><button class="btn btn-sm btn-outline-secondary" data-page="${page + 1}" ${page === totalPages ? 'disabled' : ''}>Siguiente</button>` : ''
   }
   const load = async () => {
     if (loading) return
     loading = true
+    const applyButton = $('movement-apply')
     if ($('movements-refresh')) $('movements-refresh').disabled = true
+    if (applyButton) { applyButton.disabled = true; applyButton.textContent = 'Consultando...' }
     if ($('movement-status')) $('movement-status').textContent = 'Consultando movimientos…'
     try {
-      console.debug('[movimientos] antes de getMovimientosInventario')
-      const result = await getMovimientosInventario({ ...params(), limite, offset: (page - 1) * limit })
-      console.debug('[movimientos] respuesta recibida', { count: result.count })
-      render(result)
-      const day = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Guatemala' })
-      const todayRows = result.data.filter((x) => new Date(x.created_at).toLocaleDateString('en-CA', { timeZone: 'America/Guatemala' }) === day)
-      setMetrics({ today: todayRows.length, outputs: result.data.filter((x) => x.tipo === 'salida_atencion').length, inputs: result.data.filter((x) => x.tipo === 'ingreso').length, adjustments: result.data.filter((x) => ['ajuste_positivo','ajuste_negativo'].includes(x.tipo)).length, products: new Set(result.data.map((x) => x.producto_id)).size })
+      const limite = limit
+      const offset = (page - 1) * limite
+      const filtros = params()
+      console.debug('[Movimientos] antes de consultar')
+      const resultado = await getMovimientosInventario({ ...filtros, limite, offset })
+      console.debug('[Movimientos] respuesta', { registros: resultado?.data?.length ?? 0, total: resultado?.total ?? 0 })
+      render(resultado)
+      updateMetrics(resultado.data)
     } catch (error) {
       console.debug('[movimientos] error', safeError(error))
       if ($('movement-status')) $('movement-status').textContent = 'No fue posible consultar los movimientos.'
@@ -71,6 +89,7 @@ export const initMovimientosPage = async ({ session }) => {
     } finally {
       loading = false
       if ($('movements-refresh')) $('movements-refresh').disabled = false
+      if (applyButton) { applyButton.disabled = false; applyButton.textContent = 'Aplicar filtros' }
     }
   }
 
@@ -86,10 +105,7 @@ export const initMovimientosPage = async ({ session }) => {
     } else if (inventoryResult.status === 'rejected') console.debug('[movimientos] error', safeError(inventoryResult.reason))
   }
 
-  $('movement-filters')?.addEventListener('change', () => { page = 1; load() })
-  let timer
-  $('move-search')?.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => { page = 1; load() }, 350) })
-  $('move-attention')?.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => { page = 1; load() }, 350) })
+  $('movement-filters')?.addEventListener('submit', (event) => { event.preventDefault(); page = 1; load() })
   $('movements-refresh')?.addEventListener('click', load)
   $('movement-clear')?.addEventListener('click', () => { $('movement-filters')?.reset(); if (monitor && $('move-site')) $('move-site').value = session.profile.sede_id || ''; page = 1; load() })
   $('movement-pagination')?.addEventListener('click', (e) => { const nextPage = e.target.closest('[data-page]')?.dataset.page; if (!nextPage) return; page = Number(nextPage); load() })

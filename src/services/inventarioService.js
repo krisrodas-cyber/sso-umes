@@ -130,7 +130,7 @@ export const getMovimientosInventario = async ({ sedeId, productoId, tipoMovimie
   if (attentionCode) {
     const { data, error } = await supabase.from('atenciones').select('id').eq('codigo', attentionCode).maybeSingle()
     throwIfError(error)
-    if (data === null) return { data: [], count: 0, limite, offset }
+    if (data === null) return { data: [], total: 0 }
     attentionMatches = [data.id]
   }
   let query = supabase.from('movimientos_inventario').select(`
@@ -186,7 +186,7 @@ export const getMovimientosInventario = async ({ sedeId, productoId, tipoMovimie
       responsable: normalizedResponsible?.nombre_completo ?? 'Sin identificar',
     }
   })
-  return { data: rows, count: Number.isFinite(count) ? count : 0, limite, offset }
+  return { data: rows, total: Number.isFinite(count) ? count : 0 }
 }
 
 export const inventarioService = Object.freeze({ getSedesActivas, getInventarioDisponiblePorSede, getLotesDisponibles, getCatalogosAtencion, getInventario, getResumenInventario, getAlertasInventario, getLotesVencimiento, getMovimientosInventario })
