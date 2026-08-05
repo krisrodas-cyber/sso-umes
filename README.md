@@ -1,5 +1,34 @@
 # Sistema de Atenciones SSO UMES
 
+## Pruebas manuales del Historial de atenciones
+
+### Monitora
+
+- Solo ve sus propias atenciones según RLS y visualiza su sede y turno como información fija.
+- No puede seleccionar otra sede ni otra monitora.
+- Abre el detalle de una atención permitida y ve sus productos.
+- Una atención sin productos muestra el estado vacío correspondiente.
+- No existen acciones para editar, eliminar, corregir o duplicar.
+
+### RRHH
+
+- Ve todas las atenciones permitidas y filtra por sede, turno y monitora.
+- Combina fechas, tipo de persona, resultado y búsqueda general.
+- Abre cualquier detalle permitido por RLS.
+
+### Administrador
+
+- Ve todas las atenciones y los filtros combinados funcionan.
+- No dispone de edición ni eliminación desde este módulo.
+
+### Paginación y privacidad
+
+- El conteo coincide con los registros y Anterior/Siguiente cambian de página correctamente.
+- Cambiar o limpiar filtros vuelve a la página 1 y deja las fechas vacías.
+- No se guardan pacientes ni filtros en Local Storage o Session Storage.
+- La consola no muestra nombres, teléfonos, síntomas ni objetos clínicos.
+- El listado no muestra teléfono, síntomas ni observaciones clínicas.
+
 ## Pruebas manuales de Inventario, Movimientos y Dashboard
 
 ### Inventario

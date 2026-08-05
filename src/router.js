@@ -4,7 +4,7 @@ import { topbar } from './components/topbar.js'
 import { loginPage } from './pages/login.js'
 import { dashboardPage, initDashboardPage } from './pages/dashboard.js'
 import { nuevaAtencionPage, initNuevaAtencionPage } from './pages/nueva-atencion.js'
-import { atencionesPage } from './pages/atenciones.js'
+import { atencionesPage, initAtencionesPage } from './pages/atenciones.js'
 import { inventarioPage, initInventarioPage } from './pages/inventario.js'
 import { movimientosPage, initMovimientosPage } from './pages/movimientos.js'
 import { reportesPage } from './pages/reportes.js'
@@ -105,6 +105,7 @@ export const initRouter = (root) => {
     bindMenu()
     bindLogout()
     if (resolvedPath === ROUTES.NUEVA_ATENCION) await initNuevaAtencionPage({ session })
+    if (resolvedPath === ROUTES.ATENCIONES) await initAtencionesPage({ session })
     if (resolvedPath === ROUTES.INVENTARIO) await initInventarioPage({ session })
     if (resolvedPath === ROUTES.MOVIMIENTOS) await initMovimientosPage({ session })
     if (resolvedPath === ROUTES.DASHBOARD) await initDashboardPage({ session })

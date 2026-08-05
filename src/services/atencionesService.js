@@ -1,4 +1,5 @@
 import { supabase } from '../config/supabase.js'
+import { localDateBoundaryToIso, normalizeRelation } from '../utils/formatters.js'
 
 const textOrNull = (value) => String(value ?? '').trim() || null
 const numberOrNull = (value) => value === '' || value == null ? null : Number(value)
@@ -40,4 +41,89 @@ export const getAtencionesDelDia = async () => {
   return count || 0
 }
 
-export const atencionesService = Object.freeze({ registrarAtencion, getAtencionesDelDia })
+const ATTENTION_LIST_FIELDS = `
+  id, codigo, fecha_hora, sede_id, turno_id, monitora_id, tipo_persona, nombre_persona,
+  identificacion_institucional, facultad_carrera_departamento, motivo_atencion, resultado, resultado_otro,
+  sede:sedes!atenciones_sede_id_fkey(id, codigo, nombre),
+  turno:turnos!atenciones_turno_id_fkey(id, codigo, nombre),
+  monitora:perfiles!atenciones_monitora_id_fkey(id, nombre_completo)
+`
+
+const ATTENTION_DETAIL_FIELDS = `
+  ${ATTENTION_LIST_FIELDS}, telefono, sintomas_referidos, presion_arterial, temperatura,
+  frecuencia_cardiaca, saturacion_oxigeno, glucosa, atencion_realizada, observaciones
+`
+
+const sanitizeSearch = (value) => String(value || '').trim().replace(/[(),.*%'"\\]/g, ' ').replace(/\s+/g, ' ')
+const applyAttentionFilters = (query, { fechaDesde, fechaHasta, sedeId, turnoId, monitoraId, tipoPersona, resultado, busqueda } = {}) => {
+  const fromIso = localDateBoundaryToIso(fechaDesde); const toIso = localDateBoundaryToIso(fechaHasta, true)
+  if (fromIso) query = query.gte('fecha_hora', fromIso)
+  if (toIso) query = query.lte('fecha_hora', toIso)
+  if (sedeId) query = query.eq('sede_id', sedeId)
+  if (turnoId) query = query.eq('turno_id', turnoId)
+  if (monitoraId) query = query.eq('monitora_id', monitoraId)
+  if (tipoPersona) query = query.eq('tipo_persona', tipoPersona)
+  if (resultado) query = query.eq('resultado', resultado)
+  const term = sanitizeSearch(busqueda)
+  if (term) query = query.or(`codigo.ilike.*${term}*,nombre_persona.ilike.*${term}*,identificacion_institucional.ilike.*${term}*,facultad_carrera_departamento.ilike.*${term}*,motivo_atencion.ilike.*${term}*`)
+  return query
+}
+
+const normalizeAttention = ({ sede, turno, monitora, ...item }) => ({
+  ...item,
+  sede: normalizeRelation(sede) ?? { nombre: 'No disponible' },
+  turno: normalizeRelation(turno) ?? { nombre: 'No disponible' },
+  monitora: normalizeRelation(monitora) ?? { nombre_completo: 'Sin identificar' },
+})
+
+export const getAtenciones = async ({ limite = 20, offset = 0, ...filters } = {}) => {
+  let query = supabase.from('atenciones').select(ATTENTION_LIST_FIELDS, { count: 'exact' })
+  query = applyAttentionFilters(query, filters)
+  const { data, error, count } = await query.order('fecha_hora', { ascending: false }).range(offset, offset + limite - 1)
+  if (error) throw error
+  const registros = Array.isArray(data) ? data : []
+  const total = Number.isFinite(count) ? count : 0
+  console.info('[Atenciones] registros recibidos', registros.length)
+  return { data: registros.map(normalizeAttention), count: total, limite, offset }
+}
+
+export const getAtencionPorId = async (atencionId) => {
+  if (!/^\d+$/.test(String(atencionId || ''))) return null
+  const { data, error } = await supabase.from('atenciones').select(`${ATTENTION_DETAIL_FIELDS},
+    detalles:detalle_atencion!detalle_atencion_atencion_id_fkey(
+      id, cantidad, observaciones, lote_id,
+      producto:productos!detalle_atencion_producto_id_fkey(id, codigo, nombre, categoria, presentacion, unidad_medida, unidad_dispensacion, es_consumible, permite_registro_sin_descuento),
+      lote:lotes!detalle_atencion_lote_id_fkey(id, numero_lote, fecha_vencimiento, estado)
+    )`).eq('id', atencionId).maybeSingle()
+  if (error) throw error
+  if (!data) return null
+  const normalized = normalizeAttention(data)
+  normalized.detalles = (normalized.detalles || []).map(({ producto, lote, ...detail }) => ({ ...detail, producto: normalizeRelation(producto), lote: normalizeRelation(lote) }))
+  return normalized
+}
+
+export const getResumenAtenciones = async (filters = {}) => {
+  const count = async (extra = {}) => {
+    let query = supabase.from('atenciones').select('id', { count: 'exact', head: true })
+    query = applyAttentionFilters(query, { ...filters, ...extra, busqueda: null, resultado: extra.resultado })
+    const { count: total, error } = await query
+    if (error) throw error
+    return total || 0
+  }
+  const [total, estudiantes, docentes, administrativos, referencias] = await Promise.all([
+    count(), count({ tipoPersona: 'estudiante' }), count({ tipoPersona: 'docente' }), count({ tipoPersona: 'administrativo' }),
+    (async () => { let query = supabase.from('atenciones').select('id', { count: 'exact', head: true }); query = applyAttentionFilters(query, { ...filters, busqueda: null, resultado: null }).in('resultado', ['referido_clinica', 'traslado_hospital']); const { count: totalCount, error } = await query; if (error) throw error; return totalCount || 0 })(),
+  ])
+  return { total, estudiantes, docentes, administrativos, referencias }
+}
+
+export const getCatalogosHistorial = async () => {
+  const results = await Promise.allSettled([
+    supabase.from('sedes').select('id, codigo, nombre').eq('activa', true).order('nombre'),
+    supabase.from('turnos').select('id, codigo, nombre').eq('activo', true).order('nombre'),
+    supabase.from('perfiles').select('id, nombre_completo').eq('activo', true).eq('rol', 'monitora').order('nombre_completo'),
+  ])
+  return results.map((result) => result.status === 'fulfilled' && !result.value.error ? { data: result.value.data || [], error: null } : { data: [], error: result.status === 'fulfilled' ? result.value.error : result.reason })
+}
+
+export const atencionesService = Object.freeze({ registrarAtencion, getAtencionesDelDia, getAtenciones, getAtencionPorId, getResumenAtenciones, getCatalogosHistorial })
