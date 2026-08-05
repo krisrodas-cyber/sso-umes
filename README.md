@@ -208,3 +208,15 @@ No guardes contraseñas, claves de servicio, cadenas de conexión ni respaldos e
 ## Navegación y acceso
 
 La página inicial es el inicio de sesión. La aplicación usa rutas hash (`#/ruta`) y una base relativa para funcionar en subrutas de GitHub Pages. `Usuarios` está disponible para `administrador`; `Nueva atención`, para `administrador` y `monitora`. La interfaz no presenta controles de edición o eliminación para `monitora`.
+
+## Pruebas manuales de Reportes
+
+Realiza estas pruebas con sesiones `authenticated` y datos de prueba, nunca con `service_role`:
+
+- Acceso: confirma que RRHH y administrador ingresan a `#/reportes`; confirma que monitora no ve el enlace y recibe “Acceso restringido” al intentar la ruta directamente.
+- Filtros: prueba rango de fechas, sede, turno, monitora, tipo de persona, combinaciones, “Limpiar filtros” y “Actualizar”. Verifica que cambiar un campo no consulte hasta presionar “Aplicar filtros”.
+- Tarjetas: contrasta los ocho indicadores con consultas de control autorizadas y confirma que una respuesta vacía muestre ceros.
+- Gráficos: aplica filtros repetidamente y confirma que no se dupliquen, que los valores cambien, que aparezca el estado vacío y que la distribución sea legible en móvil.
+- Productos: compara las cantidades agregadas con `detalle_atencion`, incluyendo consumibles y reutilizables.
+- Inventario: compara alertas con `vista_inventario_alertas` y vencimientos con `vista_lotes_vencimiento`.
+- Privacidad: confirma que ningún gráfico, tooltip o tabla muestre nombres de pacientes, teléfonos, identificaciones, síntomas u observaciones clínicas.

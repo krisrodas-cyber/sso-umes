@@ -7,8 +7,8 @@ import { nuevaAtencionPage, initNuevaAtencionPage } from './pages/nueva-atencion
 import { atencionesPage, initAtencionesPage } from './pages/atenciones.js'
 import { inventarioPage, initInventarioPage } from './pages/inventario.js'
 import { movimientosPage, initMovimientosPage } from './pages/movimientos.js'
-import { reportesPage } from './pages/reportes.js'
-import { usuariosPage } from './pages/usuarios.js'
+import { reportesPage, initReportesPage } from './pages/reportes.js'
+import { usuariosPage, initUsuariosPage } from './pages/usuarios.js'
 import { signIn, signOut } from './services/authService.js'
 import { authGuard } from './guards/authGuard.js'
 import { canAccessRoute } from './guards/roleGuard.js'
@@ -108,7 +108,9 @@ export const initRouter = (root) => {
     if (resolvedPath === ROUTES.ATENCIONES) await initAtencionesPage({ session })
     if (resolvedPath === ROUTES.INVENTARIO) await initInventarioPage({ session })
     if (resolvedPath === ROUTES.MOVIMIENTOS) await initMovimientosPage({ session })
+    if (resolvedPath === ROUTES.REPORTES) await initReportesPage({ session })
     if (resolvedPath === ROUTES.DASHBOARD) await initDashboardPage({ session })
+    if (resolvedPath === ROUTES.USUARIOS) await initUsuariosPage({ session })
   }
 
   window.addEventListener('hashchange', render)

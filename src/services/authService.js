@@ -54,7 +54,7 @@ export const getSession = async () => {
   if (!supabase) return null
   const { data, error } = await supabase.auth.getSession()
   if (error) throw error
-  return withProfile(data.session)
+  return withProfile(data.session, { force: true })
 }
 export const signIn = async (email, password) => {
   if (!supabase) throw new Error('Supabase no está configurado.')

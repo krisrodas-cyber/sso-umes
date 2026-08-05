@@ -5,6 +5,13 @@ export const formatDate = (value, locale = 'es-GT') => {
 }
 export const formatNumber = (value, locale = 'es-GT') => new Intl.NumberFormat(locale).format(Number(value) || 0)
 export const formatQuantity = (value, locale = 'es-GT') => new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(Number(value) || 0)
+export const formatPercentage = (value, total, locale = 'es-GT') => new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 1 }).format(total ? Number(value) / Number(total) : 0)
+export const formatMonthYear = (year, month, locale = 'es-GT') => {
+  const date = new Date(Date.UTC(Number(year), Number(month) - 1, 1))
+  if (Number.isNaN(date.getTime())) return 'No disponible'
+  const label = new Intl.DateTimeFormat(locale, { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(date).replace('.', '')
+  return label.charAt(0).toUpperCase() + label.slice(1)
+}
 export const formatDateTime = (value, locale = 'es-GT') => {
   if (!value) return '—'
   const date = new Date(value)

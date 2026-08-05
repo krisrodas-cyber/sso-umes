@@ -1,6 +1,11 @@
 export const isRequired = (value) => String(value ?? '').trim().length > 0
 export const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim())
 export const hasMinLength = (value, length) => String(value ?? '').length >= length
+export const validateStrongPassword = (value) => {
+  const password = String(value ?? '')
+  const common = ['12345', '123456', 'password', 'contraseña', 'admin123', 'qwerty']
+  return password.length >= 12 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /\d/.test(password) && /[^A-Za-z0-9]/.test(password) && !common.includes(password.toLocaleLowerCase('es'))
+}
 
 const inRange = (value, min, max) => value === '' || value == null || (Number.isFinite(Number(value)) && Number(value) >= min && Number(value) <= max)
 export const validateAtencion = (data, { isAdmin = false } = {}) => {
