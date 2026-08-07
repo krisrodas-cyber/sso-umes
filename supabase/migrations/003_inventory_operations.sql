@@ -5,6 +5,35 @@ begin;
 -- El enum histórico verificado en 001 usa "ingreso" y ya contiene
 -- "ajuste_positivo" y "ajuste_negativo". No se renombran ni eliminan valores.
 
+-- 001 no define unicidad para lotes. Antes de crear los indices se aborta sin
+-- modificar datos si ya existen claves logicas duplicadas. Un lote con numero
+-- se identifica por producto/sede/numero; sin numero, la fecha de vencimiento
+-- distingue los lotes anonimos (incluido un unico lote sin numero ni fecha).
+do $$
+begin
+  if exists (
+    select 1 from public.lotes
+    where numero_lote is not null
+    group by producto_id, sede_id, numero_lote
+    having count(*) > 1
+  ) or exists (
+    select 1 from public.lotes
+    where numero_lote is null
+    group by producto_id, sede_id, fecha_vencimiento
+    having count(*) > 1
+  ) then
+    raise exception using errcode = '23505',
+      message = 'Existen lotes duplicados; deben resolverse antes de aplicar esta migracion';
+  end if;
+end $$;
+
+create unique index lotes_producto_sede_numero_uidx
+  on public.lotes (producto_id, sede_id, numero_lote)
+  where numero_lote is not null;
+create unique index lotes_producto_sede_sin_numero_fecha_uidx
+  on public.lotes (producto_id, sede_id, fecha_vencimiento) nulls not distinct
+  where numero_lote is null;
+
 create or replace function public.registrar_entrada_inventario(
   p_producto_id bigint,
   p_sede_id bigint,
@@ -114,7 +143,8 @@ create or replace function public.ajustar_inventario(
   p_tipo_ajuste public.tipo_movimiento,
   p_cantidad numeric,
   p_motivo text,
-  p_observaciones text default null
+  p_observaciones text default null,
+  p_lote_id bigint default null
 ) returns table (movimiento_id bigint, existencia_anterior numeric, existencia_posterior numeric)
 language plpgsql
 security definer
@@ -126,6 +156,8 @@ declare
   v_movimiento_id bigint;
   v_anterior numeric(12,2);
   v_posterior numeric(12,2);
+  v_lote_cantidad numeric(12,2);
+  v_suma_lotes numeric(12,2);
   v_motivo text := nullif(btrim(p_motivo), '');
   v_observaciones text := nullif(btrim(p_observaciones), '');
 begin
@@ -151,11 +183,43 @@ begin
   v_posterior := case when p_tipo_ajuste = 'ajuste_positivo' then v_anterior + p_cantidad else v_anterior - p_cantidad end;
   if v_posterior < 0 then raise exception using errcode = '22023', message = 'La existencia no puede quedar negativa'; end if;
 
+  if p_lote_id is not null then
+    select l.cantidad_disponible into v_lote_cantidad
+    from public.lotes l
+    where l.id = p_lote_id and l.producto_id = p_producto_id and l.sede_id = p_sede_id
+      and l.estado <> 'descartado'
+    for update;
+    if not found then
+      raise exception using errcode = '22023', message = 'Lote inexistente, descartado o ajeno al producto y sede';
+    end if;
+    if p_tipo_ajuste = 'ajuste_negativo' and v_lote_cantidad < p_cantidad then
+      raise exception using errcode = '22023', message = 'La cantidad del lote no puede quedar negativa';
+    end if;
+    update public.lotes l
+    set cantidad_disponible = case when p_tipo_ajuste = 'ajuste_positivo'
+          then l.cantidad_disponible + p_cantidad else l.cantidad_disponible - p_cantidad end,
+        estado = case
+          when p_tipo_ajuste = 'ajuste_negativo' and l.cantidad_disponible - p_cantidad = 0 then 'agotado'::public.estado_lote
+          when l.fecha_vencimiento is not null and l.fecha_vencimiento < current_date then 'vencido'::public.estado_lote
+          else 'disponible'::public.estado_lote
+        end
+    where l.id = p_lote_id;
+  elsif p_tipo_ajuste = 'ajuste_negativo' then
+    -- La diferencia entre el total y los lotes es inventario deliberadamente
+    -- no trazado por lote. Un ajuste sin lote solo puede descontar esa porcion.
+    select coalesce(sum(l.cantidad_disponible), 0) into v_suma_lotes
+    from public.lotes l
+    where l.producto_id = p_producto_id and l.sede_id = p_sede_id;
+    if p_cantidad > v_anterior - v_suma_lotes then
+      raise exception using errcode = '22023', message = 'Debe indicar el lote para ajustar inventario asociado a lotes';
+    end if;
+  end if;
+
   update public.inventario_sede set existencia_actual = v_posterior where id = v_inventario_id;
   insert into public.movimientos_inventario (
-    producto_id, sede_id, tipo, cantidad, existencia_anterior, existencia_posterior, usuario_id, observaciones
+    producto_id, sede_id, lote_id, tipo, cantidad, existencia_anterior, existencia_posterior, usuario_id, observaciones
   ) values (
-    p_producto_id, p_sede_id, p_tipo_ajuste, p_cantidad, v_anterior, v_posterior, v_actor.id,
+    p_producto_id, p_sede_id, p_lote_id, p_tipo_ajuste, p_cantidad, v_anterior, v_posterior, v_actor.id,
     concat(v_motivo, case when v_observaciones is null then '' else ' · ' || v_observaciones end)
   ) returning id into v_movimiento_id;
   return query select v_movimiento_id, v_anterior, v_posterior;
@@ -309,7 +373,7 @@ create policy productos_select on public.productos for select to authenticated u
 );
 
 revoke all on function public.registrar_entrada_inventario(bigint,bigint,numeric,text,date,text) from public, anon;
-revoke all on function public.ajustar_inventario(bigint,bigint,public.tipo_movimiento,numeric,text,text) from public, anon;
+revoke all on function public.ajustar_inventario(bigint,bigint,public.tipo_movimiento,numeric,text,text,bigint) from public, anon;
 revoke all on function public.actualizar_existencia_minima(bigint,bigint,numeric) from public, anon;
 revoke all on function public.actualizar_producto_operativo(bigint,text,public.categoria_producto,text,text,text) from public, anon;
 revoke all on function public.administrar_lote_inventario(bigint,bigint,bigint,text,date,text) from public, anon;
@@ -317,7 +381,7 @@ revoke all on function public.crear_producto_inventario(text,text,public.categor
 revoke all on function public.actualizar_producto_administrador(bigint,text,text,public.categoria_producto,text,text,text,boolean,boolean,boolean) from public, anon;
 revoke all on function public.cambiar_estado_producto_inventario(bigint,boolean) from public, anon;
 grant execute on function public.registrar_entrada_inventario(bigint,bigint,numeric,text,date,text) to authenticated;
-grant execute on function public.ajustar_inventario(bigint,bigint,public.tipo_movimiento,numeric,text,text) to authenticated;
+grant execute on function public.ajustar_inventario(bigint,bigint,public.tipo_movimiento,numeric,text,text,bigint) to authenticated;
 grant execute on function public.actualizar_existencia_minima(bigint,bigint,numeric) to authenticated;
 grant execute on function public.actualizar_producto_operativo(bigint,text,public.categoria_producto,text,text,text) to authenticated;
 grant execute on function public.administrar_lote_inventario(bigint,bigint,bigint,text,date,text) to authenticated;
