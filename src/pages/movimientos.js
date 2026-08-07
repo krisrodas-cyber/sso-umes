@@ -3,15 +3,9 @@ import { getInventario, getMovimientosInventario, getSedesActivas } from '../ser
 import { formatDateTime, formatMovementType, formatQuantity } from '../utils/formatters.js'
 
 const escapeHtml = (value = '') => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;')
-const types = [['inventario_inicial','Inventario inicial'],['ingreso','Ingreso'],['salida_atencion','Salida por atención'],['ajuste_positivo','Ajuste positivo'],['ajuste_negativo','Ajuste negativo'],['vencimiento','Vencimiento'],['traslado_entrada','Traslado de entrada'],['traslado_salida','Traslado de salida']]
+const types = [['inventario_inicial','Inventario inicial'],['ingreso','Entrada'],['salida_atencion','Salida por atención'],['ajuste_positivo','Ajuste positivo'],['ajuste_negativo','Ajuste negativo'],['vencimiento','Vencimiento'],['traslado_entrada','Traslado de entrada'],['traslado_salida','Traslado de salida']]
 const metric = (label, id) => `<article class="metric-card"><span>${label}</span><strong id="${id}">0</strong></article>`
-const safeError = (error) => ({
-  name: error?.name ?? 'Error',
-  message: error?.message ?? 'Error desconocido',
-  ...(error?.code ? { code: error.code } : {}),
-  ...(error?.details ? { details: error.details } : {}),
-  ...(error?.hint ? { hint: error.hint } : {}),
-})
+const safeError = (action, error) => ({ action, code: error?.code, message: error?.message, status: error?.status })
 
 export const movimientosPage = ({ session }) => `<section class="data-page"><div class="page-heading data-heading"><div><p class="eyebrow">Trazabilidad</p><h2>Movimientos de inventario</h2><p class="text-muted">Consulta de entradas, salidas y ajustes permitidos por tu perfil.</p></div><button class="btn btn-outline-primary" id="movements-refresh" type="button">Actualizar</button></div>
   <div class="metrics-grid metrics-five">${metric('Movimientos del día','move-today')}${metric('Salidas por atención','move-outputs')}${metric('Ingresos','move-inputs')}${metric('Ajustes','move-adjustments')}${metric('Productos movimentados','move-products')}</div>
@@ -27,10 +21,9 @@ export const movimientosPage = ({ session }) => `<section class="data-page"><div
   <section class="data-panel"><div id="movement-status" class="loading-state" aria-live="polite">Consultando movimientos…</div><div id="movement-results"></div><div id="movement-pagination" class="pagination-bar"></div></section></section>`
 
 export const initMovimientosPage = async ({ session }) => {
-  console.debug('[Movimientos] inicio')
   const root = document.querySelector('.data-page')
   if (!root) {
-    console.debug('[movimientos] error', safeError(new Error('No se encontró el contenedor de la página.')))
+    console.error(safeError('iniciar_movimientos', new Error('No se encontró el contenedor de la página.')))
     return
   }
   const monitor = session.profile.rol === ROLES.MONITORA; const limit = 20
@@ -53,7 +46,7 @@ export const initMovimientosPage = async ({ session }) => {
       })
       setMetrics({ today: todayRows.length, outputs: rows.filter((item) => item.tipo === 'salida_atencion').length, inputs: rows.filter((item) => item.tipo === 'ingreso').length, adjustments: rows.filter((item) => ['ajuste_positivo','ajuste_negativo'].includes(item.tipo)).length, products: new Set(rows.map((item) => item.producto_id)).size })
     } catch (error) {
-      console.debug('[Movimientos] error de indicadores', safeError(error))
+      console.error(safeError('calcular_indicadores_movimientos', error))
       setMetrics()
     }
   }
@@ -75,13 +68,11 @@ export const initMovimientosPage = async ({ session }) => {
       const limite = limit
       const offset = (page - 1) * limite
       const filtros = params()
-      console.debug('[Movimientos] antes de consultar')
       const resultado = await getMovimientosInventario({ ...filtros, limite, offset })
-      console.debug('[Movimientos] respuesta', { registros: resultado?.data?.length ?? 0, total: resultado?.total ?? 0 })
       render(resultado)
       updateMetrics(resultado.data)
     } catch (error) {
-      console.debug('[movimientos] error', safeError(error))
+      console.error(safeError('consultar_movimientos', error))
       if ($('movement-status')) $('movement-status').textContent = 'No fue posible consultar los movimientos.'
       if ($('movement-results')) $('movement-results').innerHTML = ''
       if ($('movement-pagination')) $('movement-pagination').innerHTML = ''
@@ -98,11 +89,11 @@ export const initMovimientosPage = async ({ session }) => {
     if (sitesResult.status === 'fulfilled' && $('move-site')) {
       $('move-site').innerHTML = `<option value="">Todas las sedes</option>${sitesResult.value.map((x) => `<option value="${x.id}">${escapeHtml(x.nombre)}</option>`).join('')}`
       if (monitor) $('move-site').value = session.profile.sede_id || ''
-    } else if (sitesResult.status === 'rejected') console.debug('[movimientos] error', safeError(sitesResult.reason))
+    } else if (sitesResult.status === 'rejected') console.error(safeError('consultar_sedes_movimientos', sitesResult.reason))
     if (inventoryResult.status === 'fulfilled' && $('move-product')) {
       const unique = [...new Map(inventoryResult.value.map((x) => [x.producto_id, x])).values()].sort((a,b) => a.nombre.localeCompare(b.nombre,'es'))
       $('move-product').innerHTML = `<option value="">Todos</option>${unique.map((x) => `<option value="${x.producto_id}">${escapeHtml(x.codigo)} · ${escapeHtml(x.nombre)}</option>`).join('')}`
-    } else if (inventoryResult.status === 'rejected') console.debug('[movimientos] error', safeError(inventoryResult.reason))
+    } else if (inventoryResult.status === 'rejected') console.error(safeError('consultar_productos_movimientos', inventoryResult.reason))
   }
 
   $('movement-filters')?.addEventListener('submit', (event) => { event.preventDefault(); page = 1; load() })

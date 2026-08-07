@@ -18,7 +18,7 @@ export const formatDateTime = (value, locale = 'es-GT') => {
   return Number.isNaN(date.getTime()) ? '—' : new Intl.DateTimeFormat(locale, { timeZone: 'America/Guatemala', dateStyle: 'medium', timeStyle: 'short' }).format(date)
 }
 export const CATEGORY_LABELS = Object.freeze({ medicamento: 'Medicamento', insumo: 'Insumo' })
-export const MOVEMENT_LABELS = Object.freeze({ inventario_inicial: 'Inventario inicial', ingreso: 'Ingreso', salida_atencion: 'Salida por atención', ajuste_positivo: 'Ajuste positivo', ajuste_negativo: 'Ajuste negativo', vencimiento: 'Vencimiento', traslado_entrada: 'Traslado de entrada', traslado_salida: 'Traslado de salida' })
+export const MOVEMENT_LABELS = Object.freeze({ inventario_inicial: 'Inventario inicial', ingreso: 'Entrada', entrada: 'Entrada', salida_atencion: 'Salida por atención', ajuste_positivo: 'Ajuste positivo', ajuste_negativo: 'Ajuste negativo', vencimiento: 'Vencimiento', traslado_entrada: 'Traslado de entrada', traslado_salida: 'Traslado de salida' })
 export const ALERT_LABELS = Object.freeze({ normal: 'Normal', bajo: 'Existencia baja', agotado: 'Agotado' })
 export const EXPIRY_LABELS = Object.freeze({ vencido: 'Vencido', vence_30_dias: 'Vence en 30 días', vence_90_dias: 'Vence en 90 días', vigente: 'Vigente', sin_fecha: 'Sin fecha registrada' })
 export const PERSON_TYPE_LABELS = Object.freeze({ estudiante: 'Estudiante', docente: 'Docente', administrativo: 'Administrativo', visitante: 'Visitante' })

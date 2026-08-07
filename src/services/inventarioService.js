@@ -59,13 +59,15 @@ const normalizeInventory = (rows = []) => rows.map(({ productos, sedes, ...item 
   unidad_dispensacion: productos?.unidad_dispensacion,
   es_consumible: productos?.es_consumible,
   permite_registro_sin_descuento: productos?.permite_registro_sin_descuento,
+  estado: productos?.estado,
   sede: sedes?.nombre,
   codigo_sede: sedes?.codigo,
   estado_alerta: Number(item.existencia_actual) === 0 ? 'agotado' : Number(item.existencia_actual) <= Number(item.existencia_minima) ? 'bajo' : 'normal',
 }))
 
-export const getInventario = async ({ sedeId, categoria, estadoAlerta, tipoControl, busqueda } = {}) => {
-  let query = supabase.from('inventario_sede').select('producto_id, sede_id, existencia_actual, existencia_minima, productos!inner(codigo, nombre, categoria, presentacion, unidad_medida, unidad_dispensacion, es_consumible, permite_registro_sin_descuento, estado), sedes!inner(codigo, nombre)').eq('productos.estado', 'activo')
+export const getInventario = async ({ sedeId, categoria, estadoAlerta, tipoControl, busqueda, incluirInactivos = false } = {}) => {
+  let query = supabase.from('inventario_sede').select('producto_id, sede_id, existencia_actual, existencia_minima, productos!inner(codigo, nombre, categoria, presentacion, unidad_medida, unidad_dispensacion, es_consumible, permite_registro_sin_descuento, estado), sedes!inner(codigo, nombre)')
+  if (!incluirInactivos) query = query.eq('productos.estado', 'activo')
   if (sedeId) query = query.eq('sede_id', sedeId)
   if (categoria) query = query.eq('productos.categoria', categoria)
   const { data, error } = await query.order('producto_id')
@@ -89,13 +91,62 @@ const getExpiryState = (date) => {
 }
 
 export const getLotesVencimiento = async ({ sedeId, estadoVencimiento } = {}) => {
-  let query = supabase.from('lotes').select('id, producto_id, sede_id, numero_lote, fecha_vencimiento, cantidad_disponible, estado, productos!inner(codigo, nombre), sedes!inner(codigo, nombre)')
+  let query = supabase.from('lotes').select('id, producto_id, sede_id, numero_lote, fecha_vencimiento, cantidad_disponible, estado, observaciones, productos!inner(codigo, nombre), sedes!inner(codigo, nombre)')
   if (sedeId) query = query.eq('sede_id', sedeId)
   const { data, error } = await query.order('fecha_vencimiento', { ascending: true, nullsFirst: false })
   throwIfError(error)
   return (data || []).map(({ productos, sedes, ...lot }) => ({ ...lot, producto: productos?.nombre, codigo_producto: productos?.codigo, sede: sedes?.nombre, codigo_sede: sedes?.codigo, estado_vencimiento: getExpiryState(lot.fecha_vencimiento) }))
     .filter((lot) => !estadoVencimiento || lot.estado_vencimiento === estadoVencimiento)
     .sort((a, b) => (({ vencido: 0, vence_30_dias: 1, vence_90_dias: 2, vigente: 3, sin_fecha: 4 })[a.estado_vencimiento] - ({ vencido: 0, vence_30_dias: 1, vence_90_dias: 2, vigente: 3, sin_fecha: 4 })[b.estado_vencimiento]))
+}
+
+export const registrarEntradaInventario = async ({ productoId, sedeId, cantidad, numeroLote, fechaVencimiento, observaciones }) => {
+  const { data, error } = await supabase.rpc('registrar_entrada_inventario', {
+    p_producto_id: productoId,
+    p_sede_id: sedeId,
+    p_cantidad: Number(cantidad),
+    p_numero_lote: String(numeroLote ?? '').trim() || null,
+    p_fecha_vencimiento: fechaVencimiento || null,
+    p_observaciones: String(observaciones ?? '').trim() || null,
+  })
+  throwIfError(error)
+  return Array.isArray(data) ? data[0] : data
+}
+
+export const ajustarInventario = async ({ productoId, sedeId, tipoAjuste, cantidad, motivo, observaciones }) => {
+  const { data, error } = await supabase.rpc('ajustar_inventario', {
+    p_producto_id: productoId,
+    p_sede_id: sedeId,
+    p_tipo_ajuste: tipoAjuste,
+    p_cantidad: Number(cantidad),
+    p_motivo: String(motivo ?? '').trim(),
+    p_observaciones: String(observaciones ?? '').trim() || null,
+  })
+  throwIfError(error)
+  return Array.isArray(data) ? data[0] : data
+}
+
+export const actualizarExistenciaMinima = async ({ productoId, sedeId, existenciaMinima }) => {
+  const { data, error } = await supabase.rpc('actualizar_existencia_minima', {
+    p_producto_id: productoId,
+    p_sede_id: sedeId,
+    p_existencia_minima: Number(existenciaMinima),
+  })
+  throwIfError(error)
+  return data
+}
+
+export const administrarLoteInventario = async ({ loteId, productoId, sedeId, numeroLote, fechaVencimiento, observaciones }) => {
+  const { data, error } = await supabase.rpc('administrar_lote_inventario', {
+    p_lote_id: loteId,
+    p_producto_id: productoId,
+    p_sede_id: sedeId,
+    p_numero_lote: String(numeroLote ?? '').trim() || null,
+    p_fecha_vencimiento: fechaVencimiento || null,
+    p_observaciones: String(observaciones ?? '').trim() || null,
+  })
+  throwIfError(error)
+  return data
 }
 
 export const getResumenInventario = async (sedeId) => {
@@ -189,4 +240,4 @@ export const getMovimientosInventario = async ({ sedeId, productoId, tipoMovimie
   return { data: rows, total: Number.isFinite(count) ? count : 0 }
 }
 
-export const inventarioService = Object.freeze({ getSedesActivas, getInventarioDisponiblePorSede, getLotesDisponibles, getCatalogosAtencion, getInventario, getResumenInventario, getAlertasInventario, getLotesVencimiento, getMovimientosInventario })
+export const inventarioService = Object.freeze({ getSedesActivas, getInventarioDisponiblePorSede, getLotesDisponibles, getCatalogosAtencion, getInventario, getResumenInventario, getAlertasInventario, getLotesVencimiento, getMovimientosInventario, registrarEntradaInventario, ajustarInventario, actualizarExistenciaMinima, administrarLoteInventario })

@@ -1,6 +1,16 @@
 export const isRequired = (value) => String(value ?? '').trim().length > 0
 export const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim())
 export const hasMinLength = (value, length) => String(value ?? '').length >= length
+export const validateProduct = (data, { admin = false } = {}) => {
+  const errors = {}
+  if (admin && !isRequired(data.codigo)) errors.codigo = 'El código es obligatorio.'
+  if (!isRequired(data.nombre)) errors.nombre = 'El nombre es obligatorio.'
+  if (!isRequired(data.categoria)) errors.categoria = 'La categoría es obligatoria.'
+  if (!isRequired(data.unidadMedida)) errors.unidadMedida = 'La unidad de medida es obligatoria.'
+  return errors
+}
+export const validatePositiveQuantity = (value) => Number.isFinite(Number(value)) && Number(value) > 0
+export const validateNonNegativeQuantity = (value) => Number.isFinite(Number(value)) && Number(value) >= 0
 export const validateStrongPassword = (value) => {
   const password = String(value ?? '')
   const common = ['12345', '123456', 'password', 'contraseña', 'admin123', 'qwerty']
